@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="text-center">
+                <h1 class="text-info">New Ticket</h1>
+            </div>
+            <form method="post" asp-action="/">
+                <div class="form-group">
+                    <label for="Titel"></label>
+                    <input type="text" for="Titel" placeholder="Titel" class="form-control" autocomplete="off"/>
+                </div>    
+                <div class="form-group">
+                    <label for="Kategori"></label>
+                    <input type="text" for="Kategori" placeholder="Vælg Kategori" class="form-control" autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <label for="Beskrivelse"></label>
+                    <input type="text" for="Beskrivelse" placeholder="Beskrivelse" class="form-control" autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <label for="Prioritet"></label>
+                    <input type="text" for="Prioritet" placeholder="Vælg Prioritet" class="form-control" autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success btn-lg mb-1 float-right" value="Registration"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

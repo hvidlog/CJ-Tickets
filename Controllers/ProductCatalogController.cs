@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using ZBC.Models;
+using ZBC.Repository;
 using ZBC.Repository.Interfaces;
 
 namespace ZBC.Controllers
@@ -19,6 +20,12 @@ namespace ZBC.Controllers
 
         [Authorize]
         public async Task<IActionResult> Index()
+        {
+            var productCatalog = await _getData.GetProductCatalogAsync();
+            return View(productCatalog);
+        }
+
+        public async Task<IActionResult> new_ticket()
         {
             var productCatalog = await _getData.GetProductCatalogAsync();
             return View(productCatalog);
