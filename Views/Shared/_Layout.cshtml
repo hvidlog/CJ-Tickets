@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ZBC</title>
+    <title>@ViewData["Title"] - CJ</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ZBC.styles.css" asp-append-version="true" />
@@ -13,7 +13,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ZBC</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CJ</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -42,10 +42,26 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - ZBC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <div class="container d-flex justify-content-between align-items-center">
+            &copy; 2024 - CJ
+            <ul class="navbar-nav d-flex flex-row">
+                <li class="nav-item mx-2">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="ProductCatalog" asp-action="new_ticket">Om CJ</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="ProductCatalog" asp-action="new_ticket">Kontakt</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="ProductCatalog" asp-action="new_ticket">Data brug</a>
+                </li>
+            </ul>
         </div>
     </footer>
+
+
+
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
