@@ -9,26 +9,38 @@
         <div class="col-6 offset-3">
             <div class="text-center">
                 <h1 class="text-info">New Ticket</h1>
+                <p class="text-muted">Her laver du en ny ticket for dit IT problem</p>
             </div>
             <form method="post" asp-action="/">
                 <div class="form-group">
-                    <label for="Titel"></label>
-                    <input type="text" for="Titel" placeholder="Titel" class="form-control" autocomplete="off"/>
-                </div>    
-                <div class="form-group">
-                    <label for="Kategori"></label>
-                    <input type="text" for="Kategori" placeholder="Vælg Kategori" class="form-control" autocomplete="off" />
+                    <label for="Titel">Titel</label>
+                    <input type="text" id="Titel" placeholder="Titel" class="form-control" autocomplete="off" />
                 </div>
                 <div class="form-group">
-                    <label for="Beskrivelse"></label>
-                    <input type="text" for="Beskrivelse" placeholder="Beskrivelse" class="form-control" autocomplete="off" />
+                    <label for="Kategori">Kategori</label>
+                    <select id="Kategori" class="form-control">
+                        <option value="">Vælg Kategori</option>
+                        <option value="software">Software</option>
+                        <option value="hardware">Hardware</option>
+                        <option value="service">Service</option>
+                        <option value="support">Support</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="Prioritet"></label>
-                    <input type="text" for="Prioritet" placeholder="Vælg Prioritet" class="form-control" autocomplete="off" />
+                    <label for="Beskrivelse">Beskrivelse</label>
+                    <textarea id="Beskrivelse" placeholder="Beskrivelse" class="form-control" rows="5" autocomplete="off"></textarea>
                 </div>
                 <div class="form-group">
-                    <input type="submit" class="btn btn-success btn-lg mb-1 float-right" value="Registration"/>
+                    <label for="Prioritet">Prioritet</label>
+                    <select id="Prioritet" class="form-control" style="margin-bottom: 20px;">
+                        <option value="">Vælg Prioritet</option>
+                        <option value="høj">Høj</option>
+                        <option value="middel">Middel</option>
+                        <option value="lav">Lav</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success btn-lg mb-1 float-right" value="Registrér" />
                 </div>
             </form>
         </div>
