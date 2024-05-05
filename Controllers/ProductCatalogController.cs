@@ -25,10 +25,46 @@ namespace ZBC.Controllers
             return View(productCatalog);
         }
 
+        [Authorize]
         public async Task<IActionResult> new_ticket()
         {
             var productCatalog = await _getData.GetProductCatalogAsync();
             return View(productCatalog);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> edit_ticket()
+        {
+            var productCatalogByMaker = await _getData.GetProductCatalogByMakerAsync();
+            return View(productCatalogByMaker);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> S_home()
+        {
+            var productCatalogByMaker = await _getData.GetProductCatalogByMakerAsync();
+            return View(productCatalogByMaker);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> S_ny_edit_tickets()
+        {
+            var productCatalogByMaker = await _getData.GetProductCatalogByMakerAsync();
+            return View(productCatalogByMaker);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> S_admin()
+        {
+            var productCatalogByMaker = await _getData.GetProductCatalogByMakerAsync();
+            return View(productCatalogByMaker);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> S_dashboard()
+        {
+            var productCatalogByMaker = await _getData.GetProductCatalogByMakerAsync();
+            return View(productCatalogByMaker);
         }
 
         [Authorize]

@@ -8,7 +8,7 @@
 <table id="productTable" class="display" style="width:100%">
     <thead>
         <tr>
-            <th>Model ID</th>            
+            <th>Model ID</th>
             <th>Product type</th>
             <th>Laptop speed</th>
             <th>Laptop RAM</th>
@@ -29,7 +29,7 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.ModelID</td>                
+                <td>@item.ModelID</td>
                 <td>@item.Product_Type</td>
                 <td>@item.Laptop_Speed</td>
                 <td>@item.Laptop_RAM</td>
@@ -48,6 +48,11 @@
         }
     </tbody>
 </table>
+<!-- Button to create a new ticket -->
+<div class="text-center" style="margin-top: 20px;">
+    <button class="btn btn-primary" onclick="window.location.href='@Url.Action("new_ticket", "ProductCatalog")'">Ny ticket</button>
+</div>
+
 
 @section Scripts {
     <style>
@@ -58,7 +63,9 @@
 
     <script type="text/javascript">
         $(document).ready(() => {
-            $('#productTable').DataTable({});
+            $('#productTable').DataTable({
+                "scrollX": true
+            });
             $('#productTable th, #productTable td').addClass('no-wrap');
         });
     </script>

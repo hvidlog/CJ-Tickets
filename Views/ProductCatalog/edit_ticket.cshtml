@@ -4,45 +4,97 @@
 @{
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-6 offset-3">
-            <div class="text-center">
-                <h1 class="text-info">New Ticket</h1>
-                <p>Her laver du en ny ticket for dit IT problem</p>
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Ticket</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .text-info {
+            color: #17a2b8;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+        }
+
+        .form-control-file, .form-control {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center">
+                    <h1 class="text-info">Edit Ticket</h1>
+                    <p>Her ændre du en ticket du har lavet for at give nye infromationer ved fx at lave en kommentar til supporten der har din ticket</p>
+                </div>
             </div>
-            <form method="post" asp-action="/">
-                <div class="form-group">
-                    <label for="Titel">Titel</label>
-                    <input type="text" id="Titel" placeholder="Titel" class="form-control" autocomplete="off" />
+        </div>
+        <div class="row">
+            <!-- Ticket Oprettelse Formular Kolonne -->
+            <div class="col-md-8">
+                <form method="post" asp-action="/" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="Titel">Titel</label>
+                        <input type="text" id="Titel" name="Titel" placeholder="Titel" class="form-control" autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Kategori">Kategori</label>
+                        <select id="Kategori" name="Kategori" class="form-control">
+                            <option value="">Vælg Kategori</option>
+                            <option value="software">Software</option>
+                            <option value="hardware">Hardware</option>
+                            <option value="service">Service</option>
+                            <option value="support">Support</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Beskrivelse">Beskrivelse</label>
+                        <textarea id="Beskrivelse" name="Beskrivelse" placeholder="Beskrivelse" class="form-control" rows="5" autocomplete="off"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="Prioritet">Prioritet</label>
+                        <select id="Prioritet" name="Prioritet" class="form-control">
+                            <option value="">Vælg Prioritet</option>
+                            <option value="høj">Høj</option>
+                            <option value="middel">Middel</option>
+                            <option value="lav">Lav</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="File">Vedhæft Fil</label>
+                        <input type="file" id="File" name="File" class="form-control-file mb-2">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success btn-lg mb-1 float-right" value="Registrér" />
+                    </div>
+                </form>
+            </div>
+            <!-- Tidligere Kommentarer og Skriveboks Kolonne -->
+            <div class="col-md-4">
+                <div class="mb-3">
+                    <h3>Tidligere Kommentarer</h3>
+                    <div id="comments" style="height: 300px; overflow-y: scroll; background-color: #f8f9fa; padding: 10px;">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="Kategori">Kategori</label>
-                    <select id="Kategori" class="form-control">
-                        <option value="">Vælg Kategori</option>
-                        <option value="software">Software</option>
-                        <option value="hardware">Hardware</option>
-                        <option value="service">Service</option>
-                        <option value="support">Support</option>
-                    </select>
+                <div>
+                    <h3>Skriv en Kommentar</h3>
+                    <textarea class="form-control" id="newComment" placeholder="Skriv din kommentar her..." rows="3"></textarea>
+                    <button class="btn btn-primary mt-2">Send Kommentar</button>
                 </div>
-                <div class="form-group">
-                    <label for="Beskrivelse">Beskrivelse</label>
-                    <textarea id="Beskrivelse" placeholder="Beskrivelse" class="form-control" rows="5" autocomplete="off"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="Prioritet">Prioritet</label>
-                    <select id="Prioritet" class="form-control" style="margin-bottom: 20px;">
-                        <option value="">Vælg Prioritet</option>
-                        <option value="høj">Høj</option>
-                        <option value="middel">Middel</option>
-                        <option value="lav">Lav</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-success btn-lg mb-1 float-right" value="Registrér" />
-                </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>
+</body>
+</html>
+

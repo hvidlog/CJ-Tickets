@@ -3,3 +3,59 @@
 *@
 @{
 }
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Ticket System</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Buttons -->
+        <div class="row my-3">
+            <div class="col">
+                <button class="btn btn-primary mr-2" onclick="window.location.href='@Url.Action("S_ny_edit_tickets", "ProductCatalog")'">Ny Ticket</button>
+                <button class="btn btn-primary mr-2" onclick="window.location.href='@Url.Action("S_admin", "ProductCatalog")'">Admin</button>
+                <button class="btn btn-primary" onclick="window.location.href='@Url.Action("S_dashboard", "ProductCatalog")'">Overview</button>
+            </div>
+        </div>
+
+
+        <!-- Action Buttons -->
+        <div class="row my-2">
+            <div class="col">
+                <button class="btn btn-secondary mr-2" onclick="location.href='filtrer.html'">Filtre</button>
+                <button class="btn btn-secondary" onclick="location.href='rediger.html'">Rediger</button>
+            </div>
+        </div>
+
+        <!-- IT Tickets Table -->
+        <div class="row">
+            <div class="col">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Ticket ID</th>
+                            <th>Beskrivelse</th>
+                            <th>Status</th>
+                            <th>Prioritet</th>
+                            <th>Oprettet Dato</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        </tr>
+                        <!-- Flere rækker kan tilføjes her -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS og afhængigheder -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
