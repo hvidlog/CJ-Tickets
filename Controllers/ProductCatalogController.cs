@@ -25,6 +25,24 @@ namespace ZBC.Controllers
             return View(productCatalog);
         }
 
+        public async Task<IActionResult> om()
+        {
+            var productCatalog = await _getData.GetProductCatalogAsync();
+            return View(productCatalog);
+        }
+
+        public async Task<IActionResult> Kontakt()
+        {
+            var productCatalog = await _getData.GetProductCatalogAsync();
+            return View(productCatalog);
+        }
+
+        public async Task<IActionResult> Data_forbrug()
+        {
+            var productCatalog = await _getData.GetProductCatalogAsync();
+            return View(productCatalog);
+        }
+
         [Authorize]
         public async Task<IActionResult> new_ticket()
         {
