@@ -21,7 +21,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<CJDBContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddSingleton<IGetData, GetData>();
-//builder.Services.AddSingleton<IAddData, AddData>();
+builder.Services.AddScoped<IAddData, AddData>();
 //builder.Services.AddSingleton<IUpdateData, UpdateData>();
 //builder.Services.AddSingleton<IDeleteData, DeleteData>();
 

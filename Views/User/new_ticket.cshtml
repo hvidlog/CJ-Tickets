@@ -1,8 +1,6 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using ZBC.ViewModels
+
+@model TicketCreateViewModel
 
 <div class="container">
     <div class="row">
@@ -11,15 +9,16 @@
                 <h1 class="text-info">New Ticket</h1>
                 <p>Her laver du en ny ticket for dit IT problem</p>
             </div>
-            <form method="post" asp-action="/" enctype="multipart/form-data">
+            <form asp-controller="User" asp-action="Create" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="Titel">Titel</label>
-                    <input type="text" id="Titel" name="Titel" placeholder="Titel" class="form-control" autocomplete="off" />
+                    <label asp-for="Titel">Titel</label>
+                    <input asp-for="Titel" class="form-control" placeholder="Titel" autocomplete="off" />
                 </div>
                 <div class="form-group">
-                    <label for="Kategori">Kategori</label>
-                    <select id="Kategori" name="Kategori" class="form-control">
+                    <label asp-for="KategoriId">Kategori</label>
+                    <select asp-for="KategoriId" class="form-control" asp-items="ViewBag.KategoriList">
                         <option value="">Vælg Kategori</option>
+                        <option value="1">1</option>
                         <option value="software">Software</option>
                         <option value="hardware">Hardware</option>
                         <option value="service">Service</option>
@@ -27,22 +26,23 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="Beskrivelse">Beskrivelse</label>
-                    <textarea id="Beskrivelse" name="Beskrivelse" placeholder="Beskrivelse" class="form-control" rows="5" autocomplete="off"></textarea>
+                    <label asp-for="Beskrivelse">Beskrivelse</label>
+                    <textarea asp-for="Beskrivelse" class="form-control" rows="5" placeholder="Beskrivelse" autocomplete="off"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="Prioritet">Prioritet</label>
-                    <select id="Prioritet" name="Prioritet" class="form-control" style="margin-bottom: 20px;">
+                    <label asp-for="PrioritetId">Prioritet</label>
+                    <select asp-for="PrioritetId" class="form-control" asp-items="ViewBag.PrioritetList">
                         <option value="">Vælg Prioritet</option>
+                        <option value="1">1</option>
                         <option value="høj">Høj</option>
                         <option value="middel">Middel</option>
                         <option value="lav">Lav</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="File">Vedhæft Fil</label>
-                    <input type="file" id="File" name="File" class="form-control-file mb-2">
-                </div>
+                @* <div class="form-group">
+                    <label asp-for="File">Vedhæft Fil</label>
+                    <input asp-for="File" class="form-control-file mb-2">
+                </div> *@
                 <div class="form-group">
                     <input type="submit" class="btn btn-success btn-lg mb-1 float-right" value="Registrér" />
                 </div>
@@ -50,4 +50,3 @@
         </div>
     </div>
 </div>
-
