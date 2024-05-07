@@ -67,7 +67,14 @@
             <thead>
                 <tr>
                     <th>Ticket ID</th>
+                    <th>Oprettet</th>
                     <th>Titel</th>
+                    <th>Beskrivelse</th>
+                    <th>Bruger</th>
+                    <th>Supporter</th>
+                    <th>Status</th>
+                    <th>Prio</th>
+                    <th>Kat</th>
                 </tr>
             </thead>
             <tbody>
@@ -75,7 +82,14 @@
                 {
                     <tr>
                         <td>@item.TicketID</td>
+                        <td>@item.Oprettelsestid</td>
                         <td>@item.Titel</td>
+                        <td>@item.Beskrivelse</td>
+                        <td>@item.BrugerFNavn @item.BrugerLNavn</td>
+                        <td>@item.SupportFNavn @item.SupportLNavn</td>
+                        <td>@item.StatusNavn</td>
+                        <td>@item.PrioritetNavn</td>
+                        <td>@item.KategoriNavn</td>
                     </tr>
                 }
             </tbody>
@@ -87,7 +101,7 @@
         </div> *@
 
 
-        @section Scripts {
+    @section Scripts {
         <style>
         .no-wrap {
         white-space: nowrap;
@@ -97,7 +111,8 @@
         <script type="text/javascript">
         $(document).ready(() => {
         $('#productTable').DataTable({
-        "scrollX": true
+        "scrollX": true,
+        "scrollCollapse": true,
         });
         $('#productTable th, #productTable td').addClass('no-wrap');
         });
@@ -105,5 +120,5 @@
         }
        
 
-</body>
+    </body>
 </html>
