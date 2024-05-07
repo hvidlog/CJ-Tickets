@@ -19,11 +19,11 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<ZBCDBContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<CJDBContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddSingleton<IGetData, GetData>();
-builder.Services.AddSingleton<IAddData, AddData>();
-builder.Services.AddSingleton<IUpdateData, UpdateData>();
-builder.Services.AddSingleton<IDeleteData, DeleteData>();
+//builder.Services.AddSingleton<IAddData, AddData>();
+//builder.Services.AddSingleton<IUpdateData, UpdateData>();
+//builder.Services.AddSingleton<IDeleteData, DeleteData>();
 
 var app = builder.Build();
 
