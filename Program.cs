@@ -33,7 +33,7 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
-    app.UseExceptionHandler("/ProductCatalog/Error");
+    app.UseExceptionHandler("/Shared/Error");
     app.UseHsts();
 }
 
