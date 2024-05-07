@@ -38,6 +38,7 @@ namespace ZBC.Repository
                                 Beskrivelse = t.Beskrivelse,
                                 BrugerFNavn = b.Fornavn,
                                 BrugerLNavn = b.Efternavn,
+                                BrugerEmail = b.Email,
                                 SupportFNavn = s.Fornavn,
                                 SupportLNavn = s.Efternavn,
                                 StatusNavn = st.Navn,
