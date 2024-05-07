@@ -14,26 +14,27 @@
     <title>IT Ticket System</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <div class="container">
-        <!-- Navigation Buttons -->
-        <div class="row my-3">
-            <div class="col">
-                <button class="btn btn-primary mr-2" onclick="window.location.href='@Url.Action("Ticket_change", "Support")'">Ny Ticket</button>
-                <button class="btn btn-primary mr-2" onclick="window.location.href='@Url.Action("Admin", "Support")'">Admin</button>
-                <button class="btn btn-primary" onclick="window.location.href='@Url.Action("Dashboard", "Support")'">Overview</button>
+<body class="container-fluid">
+    <div class="container-fluid">
+        <div class="container">
+            <!-- Navigation Buttons -->
+            <div class="row my-3">
+                <div class="col">
+                    <button class="btn btn-primary mr-2" onclick="window.location.href='@Url.Action("Ticket_change", "Support")'">Ny Ticket</button>
+                    <button class="btn btn-primary mr-2" onclick="window.location.href='@Url.Action("Admin", "Support")'">Admin</button>
+                    <button class="btn btn-primary" onclick="window.location.href='@Url.Action("Dashboard", "Support")'">Overview</button>
+                </div>
             </div>
-        </div>
 
 
-        <!-- Action Buttons -->
-        <div class="row my-2">
-            <div class="col">
-                <button class="btn btn-secondary mr-2" onclick="location.href='filtrer.html'">Filtre</button>
-                <button class="btn btn-secondary" onclick="location.href='rediger.html'">Rediger</button>
+            <!-- Action Buttons -->
+            <div class="row my-2">
+                <div class="col">
+                    <button class="btn btn-secondary mr-2" onclick="location.href='filtrer.html'">Filtre</button>
+                    <button class="btn btn-secondary" onclick="location.href='rediger.html'">Rediger</button>
+                </div>
             </div>
         </div>
-    </div>
 
  @*        <!-- IT Tickets Table -->
         <div class="row">
@@ -62,7 +63,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> *@
 
-      
+    
         <table id="productTable" class="display" style="width:100%">
             <thead>
                 <tr>
@@ -71,6 +72,7 @@
                     <th>Titel</th>
                     <th>Beskrivelse</th>
                     <th>Bruger</th>
+                    <th>Email</th>
                     <th>Supporter</th>
                     <th>Status</th>
                     <th>Prio</th>
@@ -86,6 +88,7 @@
                         <td>@item.Titel</td>
                         <td>@item.Beskrivelse</td>
                         <td>@item.BrugerFNavn @item.BrugerLNavn</td>
+                        <td>@item.BrugerEmail</td>
                         <td>@item.SupportFNavn @item.SupportLNavn</td>
                         <td>@item.StatusNavn</td>
                         <td>@item.PrioritetNavn</td>
@@ -94,8 +97,8 @@
                 }
             </tbody>
         </table>
-
-@*         <!-- Button to create a new ticket -->
+    </div> 
+            @*         <!-- Button to create a new ticket -->
         <div class="text-center" style="margin-top: 20px;">
         <button class="btn btn-primary" onclick="window.location.href='@Url.Action("new_ticket", "ProductCatalog")'">Ny ticket</button>
         </div> *@
@@ -120,5 +123,5 @@
         }
        
 
-    </body>
+</body>
 </html>

@@ -18,7 +18,7 @@ namespace ZBC.Repository
             _serviceScopeFactory= serviceScopeFactory;
         }
 
-        public async Task<List<TicketOverviewViewModel>> GetTicketAsync()
+        public async Task<List<TicketOverviewViewModel>> GetTicketOverviewAsync()
         {
             using (var scope = _serviceScopeFactory.CreateScope())
             {
@@ -50,6 +50,39 @@ namespace ZBC.Repository
                                 //SupporterId = t.SupporterId
                             };
                 List<TicketOverviewViewModel> result = await query.ToListAsync();
+                return result;
+            }
+        }
+
+        public async Task<List<TicketViewModel>> GetTicketAsync(int ticketid)
+        {
+            using (var scope = _serviceScopeFactory.CreateScope())
+            { 
+                var dbContext = scope.ServiceProvider.GetRequiredService<CJDBContext>();
+
+                List<string> muligeKats = await (from k in dbContext.Kategoriers select k.Navn).ToListAsync();
+
+                var query = from t in dbContext.Tickets
+                            join st in dbContext.Statuses on t.StatusId equals st.StatusId
+                            join p in dbContext.Prioriteters on t.PrioritetId equals p.PrioritetId
+                            join k in dbContext.Kategoriers on t.KategoriId equals k.KategoriId
+                            where t.TicketId == ticketid
+                            select new TicketViewModel
+                            {
+                                TicketID = t.TicketId,
+                                Oprettelsestid = t.Oprettelsestid,
+                                Titel = t.Titel,
+                                Beskrivelse = t.Beskrivelse,
+                                StatusNavn = st.Navn,
+                                PrioritetNavn = p.Navn,
+                                KategoriNavn = k.Navn,
+                                //Titel = t.Titel,
+                                //Beskrivelse = t.Beskrivelse,
+                                //BrugerId = t.BrugerId,
+                                //SupporterId = t.SupporterId
+                                muligeKategorier = muligeKats
+                            };
+                List<TicketViewModel> result = await query.ToListAsync();
                 return result;
             }
         }

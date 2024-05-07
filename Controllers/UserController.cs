@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Principal;
 using ZBC.Models;
 using ZBC.Repository.Interfaces;
 using ZBC.ViewModels;
@@ -23,14 +24,15 @@ namespace ZBC.Controllers
         [Authorize]
         public async Task<IActionResult> index()
         {
-            var tickets = await _getData.GetTicketAsync();
+            var tickets = await _getData.GetTicketOverviewAsync();
             return View(tickets);
         }
 
         [Authorize]
-        public async Task<IActionResult> Edit_ticket()
+        public async Task<IActionResult> Edit_ticket(int ticket )
         {
-            var tickets = await _getData.GetTicketAsync();
+            
+            var tickets = await _getData.GetTicketAsync(ticket);
             return View(tickets);
         }
 
@@ -62,7 +64,5 @@ namespace ZBC.Controllers
 
             return RedirectToAction("index");
         }
-
-
     }
 }
