@@ -23,8 +23,6 @@ public partial class Ticket
     [Unicode(false)]
     public string? Beskrivelse { get; set; }
 
-    public short? Prioritet { get; set; }
-
     [Column("BrugerID")]
     public int BrugerId { get; set; }
 

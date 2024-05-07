@@ -1,0 +1,53 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="text-center">
+                <h1 class="text-info">New Ticket</h1>
+                <p>Her laver du en ny ticket for dit IT problem</p>
+            </div>
+            <form method="post" asp-action="/" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="Titel">Titel</label>
+                    <input type="text" id="Titel" name="Titel" placeholder="Titel" class="form-control" autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <label for="Kategori">Kategori</label>
+                    <select id="Kategori" name="Kategori" class="form-control">
+                        <option value="">Vælg Kategori</option>
+                        <option value="software">Software</option>
+                        <option value="hardware">Hardware</option>
+                        <option value="service">Service</option>
+                        <option value="support">Support</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Beskrivelse">Beskrivelse</label>
+                    <textarea id="Beskrivelse" name="Beskrivelse" placeholder="Beskrivelse" class="form-control" rows="5" autocomplete="off"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="Prioritet">Prioritet</label>
+                    <select id="Prioritet" name="Prioritet" class="form-control" style="margin-bottom: 20px;">
+                        <option value="">Vælg Prioritet</option>
+                        <option value="høj">Høj</option>
+                        <option value="middel">Middel</option>
+                        <option value="lav">Lav</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="File">Vedhæft Fil</label>
+                    <input type="file" id="File" name="File" class="form-control-file mb-2">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success btn-lg mb-1 float-right" value="Registrér" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
