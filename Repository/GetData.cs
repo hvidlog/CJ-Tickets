@@ -28,6 +28,7 @@ namespace ZBC.Repository
                             select new TicketOverviewViewModel
                             {
                                 TicketID = t.TicketId,
+                                Titel = t.Titel
                             };
                 List<TicketOverviewViewModel> result = await query.ToListAsync();
                 return result;
