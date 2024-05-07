@@ -1,4 +1,96 @@
-﻿@* @using ZBC.ViewModels
+﻿@using ZBC.ViewModels
+
+@model List<TicketOverviewViewModel>
+
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Ticket System</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    @*        <!-- IT Tickets Table -->
+    <div class="row">
+    <div class="col">
+    <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+    <th>Ticket ID</th>
+    <th>Beskrivelse</th>
+    <th>Status</th>
+    <th>Prioritet</th>
+    <th>Oprettet Dato</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    </tr>
+    <!-- Flere rækker kan tilføjes her -->
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+
+    <!-- Bootstrap JS og afhængigheder -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> *@
+
+
+    <table id="productTable" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Ticket ID</th>
+                <th>Titel</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.TicketID</td>
+                    <td>@item.Titel</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+            <!-- Button to create a new ticket -->
+    <div class="text-center" style="margin-top: 20px;">
+    <button class="btn btn-primary" onclick="window.location.href='@Url.Action("new_ticket", "ProductCatalog")'">Ny ticket</button>
+    </div>
+
+
+    @section Scripts {
+        <style>
+            .no-wrap {
+                white-space: nowrap;
+            }
+        </style>
+
+        <script type="text/javascript">
+            $(document).ready(() => {
+                $('#productTable').DataTable({
+                    "scrollX": true
+                });
+                $('#productTable th, #productTable td').addClass('no-wrap');
+            });
+        </script>
+    }
+
+
+</body>
+</html>
+
+
+
+
+
+
+@* @using ZBC.ViewModels
 @{
     ViewData["Title"] = "Product list";
 }
@@ -47,14 +139,14 @@
             </tr>
         }
     </tbody>
-</table>
+</table> *@
 <!-- Button to create a new ticket -->
-<div class="text-center" style="margin-top: 20px;">
-    <button class="btn btn-primary" onclick="window.location.href='@Url.Action("new_ticket", "ProductCatalog")'">Ny ticket</button>
-</div>
+@* <div class="text-center" style="margin-top: 20px;">
+    <button class="btn btn-primary" onclick="window.location.href='@Url.Action("new_ticket", "User")'">Ny ticket</button>
+</div> *@
 
 
-@section Scripts {
+@* @section Scripts {
     <style>
         .no-wrap {
             white-space: nowrap;
@@ -69,5 +161,4 @@
             $('#productTable th, #productTable td').addClass('no-wrap');
         });
     </script>
-}
- *@
+} *@
