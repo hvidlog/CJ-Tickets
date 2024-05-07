@@ -10,34 +10,25 @@
     </li>
 
     <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="ProductCatalog" asp-action="Index">Home</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Home</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="ProductCatalog" asp-action="Dashboard">Dashboard</a>
+        <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="new_ticket">New Ticket</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Article" asp-action="Index">Articles</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Edit_ticket">edit Ticket</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="ProductCatalog" asp-action="Playground">Playground</a>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Support" asp-action="Home">Support_home</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="ProductCatalog" asp-action="new_ticket">New Ticket</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Support" asp-action="Ticket_change">Support_ticket</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="ProductCatalog" asp-action="edit_ticket">edit Ticket</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Support" asp-action="Admin">Support_admin</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="ProductCatalog" asp-action="S_home">Support_home</a>
-    </li>
-    <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="ProductCatalog" asp-action="S_ny_edit_tickets">Support_ticket</a>
-    </li>
-    <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="ProductCatalog" asp-action="S_admin">Support_admin</a>
-    </li>
-    <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="ProductCatalog" asp-action="S_Dashboard">Support_dashboard</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Support" asp-action="Dashboard">Support_dashboard</a>
     </li>
     <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "ProductCatalog", new { area = "" })">
