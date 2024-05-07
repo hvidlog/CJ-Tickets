@@ -18,21 +18,21 @@ namespace ZBC.Controllers
         [Authorize]
         public async Task<IActionResult> Om()
         {
-            var tickets = await _getData.GetTicketAsync();
+            var tickets = await _getData.GetTicketOverviewAsync();
             return View(tickets);
         }
 
         [Authorize]
         public async Task<IActionResult> Kontakt()
         {
-            var tickets = await _getData.GetTicketAsync();
+            var tickets = await _getData.GetTicketOverviewAsync();
             return View(tickets);
         }
 
         [Authorize]
         public async Task<IActionResult> Data_forbrug()
         {
-            var tickets = await _getData.GetTicketAsync();
+            var tickets = await _getData.GetTicketOverviewAsync();
             return View(tickets);
         }
     }

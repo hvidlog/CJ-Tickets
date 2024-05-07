@@ -21,28 +21,28 @@ namespace ZBC.Controllers
         [Authorize]
         public async Task<IActionResult> Home()
         {
-            var tickets = await _getData.GetTicketAsync();
+            var tickets = await _getData.GetTicketOverviewAsync();
             return View(tickets);
         }
 
         [Authorize]
         public async Task<IActionResult> Dashboard()
         {
-            var tickets = await _getData.GetTicketAsync();
+            var tickets = await _getData.GetTicketOverviewAsync();
             return View(tickets);
         }
 
         [Authorize]
         public async Task<IActionResult> Admin()
         {
-            var tickets = await _getData.GetTicketAsync();
+            var tickets = await _getData.GetTicketOverviewAsync();
             return View(tickets);
         }
 
         [Authorize]
         public async Task<IActionResult> Ticket_change()
         {
-            var tickets = await _getData.GetTicketAsync();
+            var tickets = await _getData.GetTicketOverviewAsync();
             return View(tickets);
         }
 

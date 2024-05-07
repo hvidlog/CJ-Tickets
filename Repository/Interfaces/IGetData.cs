@@ -7,6 +7,7 @@ namespace ZBC.Repository.Interfaces
 {
     public interface IGetData
     {
-        Task<List<TicketOverviewViewModel>> GetTicketAsync();
+        Task<List<TicketOverviewViewModel>> GetTicketOverviewAsync();
+        Task<List<TicketViewModel>> GetTicketAsync(int ticketid);
     }
 }

@@ -43,7 +43,7 @@
                         <td>@item.StatusNavn</td>
                         <td>@item.PrioritetNavn</td>
                         <td>@item.KategoriNavn</td>
-                        <td><button class="btn btn-primary" onclick="location.href='@Url.Action("Edit_ticket", "User")'">Edit</button></td>
+                        <td><button class="btn btn-primary" onclick="location.href='@Url.Action("Edit_ticket", "User", new { ticket = item.TicketID.ToString()})'">Edit</button></td>
                     </tr>
                 }
             }

@@ -1,9 +1,18 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
-}
+@using ZBC.ViewModels
+@using ZBC.Repository
+@using ZBC.Repository.Interfaces
+@model List<TicketViewModel>
 
+
+
+@if (Model.Count == 0 | Model.Count >= 2)
+{
+    <h1>SOMETHING IS WRONG</h1>
+}
+else{
 <!DOCTYPE html>
 <html lang="da">
 <head>
@@ -36,7 +45,7 @@
             <div class="col-12">
                 <div class="text-center">
                     <h1 class="text-info">Edit Ticket</h1>
-                    <p>Her ændre du en ticket du har lavet for at give nye infromationer ved fx at lave en kommentar til supporten der har din ticket</p>
+                    <p>Her ændre du en ticket du har lavet for at give nye informationer ved fx at lave en kommentar til supporten der har din ticket</p>
                 </div>
             </div>
         </div>
@@ -46,25 +55,33 @@
                 <form method="post" asp-action="/" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="Titel">Titel</label>
-                        <input type="text" id="Titel" name="Titel" placeholder="Titel" class="form-control" autocomplete="off" />
+                        <input type="text" id="Titel" name="Titel" value=@Model[0].Titel placeholder="Titel" class="form-control" autocomplete="off"/>
                     </div>
                     <div class="form-group">
-                        <label for="Kategori">Kategori</label>
-                        <select id="Kategori" name="Kategori" class="form-control">
-                            <option value="">Vælg Kategori</option>
-                            <option value="software">Software</option>
-                            <option value="hardware">Hardware</option>
-                            <option value="service">Service</option>
-                            <option value="support">Support</option>
-                        </select>
+                            <label for="Kategori">Kategori</label><label>@Model[0].KategoriNavn</label>
+                            <select id="Kategori" name="Kategori" class="form-control" value=@Model[0].KategoriNavn>
+                                <option value="" hidden>Vælg kategori</option>
+                                @foreach (string kat in @Model[0].muligeKategorier)
+                                {
+                                    if (kat == @Model[0].KategoriNavn.ToString())
+                                    {
+                                        <option value="@kat" selected>@kat</option>
+                                    }
+                                    else{
+                                        <option value="@kat">@kat</option>
+                                    }
+
+                                }
+                            </select>
                     </div>
                     <div class="form-group">
-                        <label for="Beskrivelse">Beskrivelse</label>
-                        <textarea id="Beskrivelse" name="Beskrivelse" placeholder="Beskrivelse" class="form-control" rows="5" autocomplete="off"></textarea>
+                            <label for="Beskrivelse">Beskrivelse</label>
+                            <textarea id="Beskrivelse" name="Beskrivelse" placeholder="Beskrivelse" class="form-control" rows="5" autocomplete="off">@Model[0].Beskrivelse</textarea>
                     </div>
                     <div class="form-group">
                         <label for="Prioritet">Prioritet</label>
                         <select id="Prioritet" name="Prioritet" class="form-control">
+                                
                             <option value="">Vælg Prioritet</option>
                             <option value="høj">Høj</option>
                             <option value="middel">Middel</option>
@@ -97,4 +114,4 @@
     </div>
 </body>
 </html>
-
+}
