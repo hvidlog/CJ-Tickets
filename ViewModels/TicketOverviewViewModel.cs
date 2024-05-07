@@ -11,6 +11,7 @@ namespace ZBC.ViewModels
         public string? Beskrivelse { get; set; }
         public string? BrugerFNavn { get; set; }
         public string? BrugerLNavn { get; set; }
+        public string? BrugerEmail { get; set; }
         public string? SupportFNavn { get; set; }
         public string? SupportLNavn { get; set; }
         public string? StatusNavn { get; set; }

@@ -39,21 +39,39 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> *@
 
-
     <table id="productTable" class="display" style="width:100%">
         <thead>
             <tr>
                 <th>Ticket ID</th>
+                <th>Oprettet</th>
                 <th>Titel</th>
+                <th>Beskrivelse</th>
+                <th>Bruger</th>
+                <th>Email</th>
+                <th>Supporter</th>
+                <th>Status</th>
+                <th>Prio</th>
+                <th>Kat</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>@item.TicketID</td>
-                    <td>@item.Titel</td>
-                </tr>
+                if (User.Identity?.Name == item.BrugerEmail)
+                {
+                    <tr>
+                        <td>@item.TicketID</td>
+                        <td>@item.Oprettelsestid</td>
+                        <td>@item.Titel</td>
+                        <td>@item.Beskrivelse</td>
+                        <td>@item.BrugerFNavn @item.BrugerLNavn</td>
+                        <td>@item.BrugerEmail</td>
+                        <td>@item.SupportFNavn @item.SupportLNavn</td>
+                        <td>@item.StatusNavn</td>
+                        <td>@item.PrioritetNavn</td>
+                        <td>@item.KategoriNavn</td>
+                    </tr>
+                }
             }
         </tbody>
     </table>
