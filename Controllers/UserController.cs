@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Principal;
-using ZBC.Models;
-using ZBC.Repository.Interfaces;
-using ZBC.ViewModels;
+using CJ.Models;
+using CJ.Repository.Interfaces;
+using CJ.ViewModels;
 
-namespace ZBC.Controllers
+namespace CJ.Controllers
 {
     public class UserController : Controller
     {

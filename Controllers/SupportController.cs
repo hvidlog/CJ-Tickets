@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using ZBC.Models;
-using ZBC.Repository;
-using ZBC.Repository.Interfaces;
+using CJ.Models;
+using CJ.Repository;
+using CJ.Repository.Interfaces;
 
-namespace ZBC.Controllers
+namespace CJ.Controllers
 {
     public class SupportController : Controller
     {

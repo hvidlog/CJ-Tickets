@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ZBC.Models;
-//using ZBC.Models.TicketData;
-using ZBC.ViewModels;
+using CJ.Models;
+//using CJ.Models.TicketData;
+using CJ.ViewModels;
 
-namespace ZBC.Repository.Interfaces
+namespace CJ.Repository.Interfaces
 {
     public interface IAddData
     {

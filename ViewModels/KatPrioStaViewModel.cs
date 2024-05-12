@@ -1,7 +1,7 @@
 ﻿//ViewModel to get Lists of ID's and names of the Kategory, Priority, and Status tables.
-using ZBC.Models;
+using CJ.Models;
 
-namespace ZBC.ViewModels
+namespace CJ.ViewModels
 {
     public class KatPrioStaViewModel
     {

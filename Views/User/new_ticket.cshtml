@@ -1,4 +1,4 @@
-﻿@using ZBC.ViewModels
+﻿@using CJ.ViewModels
 
 @model TicketCreateViewModel
 
@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-6 offset-3">
             <div class="text-center">
-                <h1 class="text-info">New Ticket</h1>
+                <h1>New Ticket</h1>
                 <p>Her laver du en ny ticket for dit IT problem</p>
             </div>
             <form asp-controller="User" asp-action="Create" method="post" enctype="multipart/form-data">
@@ -37,10 +37,10 @@
                         <option value="3">Lav</option>
                     </select>
                 </div>
-                @* <div class="form-group">
+                <div class="form-group">
                     <label asp-for="File">Vedhæft Fil</label>
                     <input asp-for="File" class="form-control-file mb-2">
-                </div> *@
+                </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-success btn-lg mb-1 float-right" value="Registrér" />
                 </div>

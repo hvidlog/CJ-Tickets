@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using ZBC.Data;
-using ZBC.Models;
-using ZBC.Repository;
-using ZBC.Repository.Interfaces;
+using CJ.Data;
+using CJ.Models;
+using CJ.Repository;
+using CJ.Repository.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

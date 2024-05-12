@@ -1,4 +1,4 @@
-namespace ZBC.Models
+namespace CJ.Models
 {
     public class ErrorViewModel
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using ZBC.Models;
+using CJ.Models;
 
-namespace ZBC.Data;
+namespace CJ.Data;
 
 public partial class CJDBContext : DbContext
 {

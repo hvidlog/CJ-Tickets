@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using ZBC.Models;
+using CJ.Models;
 
-namespace ZBC.ViewModels
+namespace CJ.ViewModels
 {
     public class TicketViewModel
     {

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace ZBC.Models;
+namespace CJ.Models;
 
 [Table("Kategorier")]
 public partial class Kategorier

@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using ZBC.Data;
-using ZBC.Models;
-//using ZBC.Models.TicketData;
-using ZBC.Repository.Interfaces;
-using ZBC.ViewModels;
+using CJ.Data;
+using CJ.Models;
+//using CJ.Models.TicketData;
+using CJ.Repository.Interfaces;
+using CJ.ViewModels;
 using static System.Formats.Asn1.AsnWriter;
 
-namespace ZBC.Repository
+namespace CJ.Repository
 {
     public class AddData : IAddData
     {
@@ -27,11 +27,11 @@ namespace ZBC.Repository
                 {
                     Titel = model.Titel,
                     Beskrivelse = model.Beskrivelse,
-                    BrugerId = 3,  // Antager at BrugerId kommer fra et sted (session, model, etc.)
-                    SupporterId = 4,  // Dette skal også håndteres afhængigt af applikationens logik
-                    StatusId = 1,  // For eksempel, antager en initial status, skal håndteres korrekt
-                    PrioritetId = model.PrioritetId,  // Konverteret fra model.Prioritet til en ID
-                    KategoriId = model.KategoriId  // Konverteret fra model.Kategori til en ID
+                    BrugerId = 3,  
+                    SupporterId = 4,
+                    StatusId = 1, 
+                    PrioritetId = model.PrioritetId, 
+                    KategoriId = model.KategoriId 
                 };
 
                 // Tilføj den nye ticket til databasen

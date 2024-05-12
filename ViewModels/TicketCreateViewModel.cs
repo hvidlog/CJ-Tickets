@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using ZBC.Models;
+using CJ.Models;
 
-namespace ZBC.ViewModels
+namespace CJ.ViewModels
 {
     public class TicketCreateViewModel
     {
@@ -11,7 +11,7 @@ namespace ZBC.ViewModels
         public int PrioritetId { get; set; }
         public int BrugerId { get; set; }
         public int SupporterId { get; set; }
-/*        public IFormFile File { get; set; } */ // Use IFormFile for file uploads in ASP.NET Core
+        public IFormFile File { get; set; }
     }
 
 }

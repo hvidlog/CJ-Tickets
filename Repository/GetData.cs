@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using ZBC.Data;
-using ZBC.Models;
-//using ZBC.Models.TicketData;
-using ZBC.Repository.Interfaces;
-using ZBC.ViewModels;
+using CJ.Data;
+using CJ.Models;
+//using CJ.Models.TicketData;
+using CJ.Repository.Interfaces;
+using CJ.ViewModels;
 using static System.Formats.Asn1.AsnWriter;
 
-namespace ZBC.Repository
+namespace CJ.Repository
 {
     public class GetData : IGetData
     {

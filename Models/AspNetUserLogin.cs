@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace ZBC.Models;
+namespace CJ.Models;
 
 [PrimaryKey("LoginProvider", "ProviderKey")]
 [Index("UserId", Name = "IX_AspNetUserLogins_UserId")]
