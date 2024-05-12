@@ -1,4 +1,5 @@
-﻿@using CJ.ViewModels
+﻿<!-- This Razor view displays an overview of tickets. -->
+@using CJ.ViewModels
 
 @model List<TicketOverviewViewModel>
 
@@ -34,31 +35,30 @@
             {
                 if (User.Identity?.Name == item.BrugerEmail)
                 {
-            <tr>
-                <td>@item.TicketID</td>
-                <td>@item.Oprettelsestid</td>
-                <td>@item.Titel</td>
-                <td>@item.Beskrivelse</td>
-                <td>@item.BrugerFNavn @item.BrugerLNavn</td>
-                <td>@item.BrugerEmail</td>
-                <td>@item.SupportFNavn @item.SupportLNavn</td>
-                <td>@item.StatusNavn</td>
-                <td>@item.PrioritetNavn</td>
-                <td>@item.KategoriNavn</td>
-                <td><button class="btn btn-primary" onclick="location.href='@Url.Action("Edit_ticket", "User", new { ticket = item.TicketID.ToString()})'">Edit</button></td>
-            </tr>
+                    <tr>
+                        <td>@item.TicketID</td>
+                        <td>@item.Oprettelsestid</td>
+                        <td>@item.Titel</td>
+                        <td>@item.Beskrivelse</td>
+                        <td>@item.BrugerFNavn @item.BrugerLNavn</td>
+                        <td>@item.BrugerEmail</td>
+                        <td>@item.SupportFNavn @item.SupportLNavn</td>
+                        <td>@item.StatusNavn</td>
+                        <td>@item.PrioritetNavn</td>
+                        <td>@item.KategoriNavn</td>
+                        <!-- Button to edit ticket -->
+                        <td><button class="btn btn-primary" onclick="location.href='@Url.Action("Edit_ticket", "User", new { ticket = item.TicketID.ToString()})'">Edit</button></td>
+                    </tr>
                 }
             }
         </tbody>
     </table>
-
 
     <!-- Button to create a new ticket -->
     <div class="text-center" style="margin-top: 20px;">
         <button class="btn btn-primary" onclick="window.location.href='@Url.Action("new_ticket", "User")'">Ny ticket</button>
         <p class="text-center">tryk her for at lave en ny ticket</p>
     </div>
-
 
     @section Scripts {
         <style>
@@ -76,7 +76,5 @@
             });
         </script>
     }
-
-
 </body>
 </html>

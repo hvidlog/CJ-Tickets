@@ -13,13 +13,16 @@ namespace CJ.Repository
     {
         IServiceScopeFactory _serviceScopeFactory;
 
-        public AddData(IServiceScopeFactory serviceScopeFactory) 
+        // Constructor to initialize AddData with IServiceScopeFactory.
+        public AddData(IServiceScopeFactory serviceScopeFactory)
         {
-            _serviceScopeFactory= serviceScopeFactory;
+            _serviceScopeFactory = serviceScopeFactory;
         }
 
+        // Method to asynchronously add a new ticket to the database.
         public async Task AddTicketAsync(TicketCreateViewModel model)
         {
+            // Creating a scope to resolve DbContext dependency.
             using (var scope = _serviceScopeFactory.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetRequiredService<CJDBContext>();
@@ -27,14 +30,14 @@ namespace CJ.Repository
                 {
                     Titel = model.Titel,
                     Beskrivelse = model.Beskrivelse,
-                    BrugerId = 3,  
-                    SupporterId = 4,
-                    StatusId = 1, 
-                    PrioritetId = model.PrioritetId, 
-                    KategoriId = model.KategoriId 
+                    BrugerId = 3,    // 
+                    SupporterId = 4, // These numbers are hardcoded in here for demonstration purposes
+                    StatusId = 1,    //
+                    PrioritetId = model.PrioritetId,
+                    KategoriId = model.KategoriId
                 };
 
-                // Tilføj den nye ticket til databasen
+                // Add the new ticket to the database.
                 dbContext.Tickets.Add(newTicket);
                 await dbContext.SaveChangesAsync();
             }

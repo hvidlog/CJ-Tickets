@@ -1,16 +1,23 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿<!-- This Razor view displays a form for editing a ticket. -->
+@*
+   For more information on enabling MVC for empty projects, visit
+   https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
 <!DOCTYPE html>
 <html lang="da">
 <head>
+    <!-- Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title -->
     <title>Edit Ticket</title>
+    <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Page styles -->
     <style>
+        /* Styling for the page */
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
@@ -38,52 +45,62 @@
         }
 
         .container {
-            margin-bottom: 100px; /* Juster denne værdi baseret på footeren's højde */
+            margin-bottom: 100px; /* Adjust this value based on the footer's height */
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <!-- Ticket Formular Kolonne -->
+            <!-- Ticket Form Column -->
             <div class="col-md-8">
+                <!-- Ticket Form -->
                 <form method="post" asp-action="/" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-6">
+                            <!-- Oprettelsestid input -->
                             <div class="form-group">
                                 <label for="Oprettelsestid">Oprettelsestid</label>
                                 <input type="datetime-local" id="Oprettelsestid" name="Oprettelsestid" class="form-control" />
                             </div>
+                            <!-- Titel input -->
                             <div class="form-group">
                                 <label for="Titel">Titel</label>
                                 <input type="text" id="Titel" name="Titel" class="form-control" />
                             </div>
+                            <!-- Bruger input -->
                             <div class="form-group">
                                 <label for="Bruger">Bruger</label>
                                 <input type="text" id="Bruger" name="Bruger" class="form-control" />
                             </div>
+                            <!-- Supporter input -->
                             <div class="form-group">
                                 <label for="Supporter">Supporter</label>
                                 <input type="text" id="Supporter" name="Supporter" class="form-control" />
                             </div>
+                            <!-- Email input -->
                             <div class="form-group">
                                 <label for="Email">Email</label>
                                 <input type="text" id="Email" name="Email" class="form-control" />
                             </div>
                         </div>
                         <div class="col-md-6">
+                            <!-- Status input -->
                             <div class="form-group">
                                 <label for="Status">Status</label>
                                 <input type="text" id="Status" name="Status" class="form-control" />
                             </div>
+                            <!-- Telefonnummer input -->
                             <div class="form-group">
                                 <label for="Telefonnummer">Telefonnummer</label>
                                 <input type="tel" id="Telefonnummer" name="Telefonnummer" class="form-control" />
                             </div>
+                            <!-- Lukke tid input -->
                             <div class="form-group">
                                 <label for="Lukke_tid">Lukke tid</label>
                                 <input type="datetime-local" id="Lukke_tid" name="Lukke_tid" class="form-control" />
                             </div>
+                            <!-- Prioritet select -->
                             <div class="form-group">
                                 <label for="Prioritet">Prioritet</label>
                                 <select id="Prioritet" name="Prioritet" class="form-control">
@@ -93,6 +110,7 @@
                                     <option value="lav">Lav</option>
                                 </select>
                             </div>
+                            <!-- Kategori select -->
                             <div class="form-group">
                                 <label for="Kategori">Kategori</label>
                                 <select id="Kategori" name="Kategori" class="form-control">
@@ -105,22 +123,26 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Beskrivelse textarea -->
                     <div class="form-group">
                         <label for="Beskrivelse">Beskrivelse</label>
                         <textarea id="Beskrivelse" name="Beskrivelse" class="form-control" rows="4"></textarea>
                     </div>
+                    <!-- Comment writing section -->
                     <div class="form-group">
                         <h3>Skriv en Kommentar</h3>
                         <textarea class="form-control" id="newComment" placeholder="Skriv din kommentar her..." rows="3"></textarea>
                         <button class="btn btn-primary mt-2">Kunde Kommentar</button>
                         <button class="btn btn-primary mt-2">Support Kommentar</button>
                     </div>
+                    <!-- Previous comments section -->
                     <div class="form-group">
                         <h3>Tidligere Kommentarer</h3>
                         <div id="comments" style="height: 300px; overflow-y: scroll; background-color: #f8f9fa; padding: 10px;">
-                            <!-- Kommentarer vil blive vist her -->
+                            <!-- Previous comments will be displayed here -->
                         </div>
                     </div>
+                    <!-- Submit button -->
                     <div class="form-group">
                         <input type="submit" class="btn btn-success btn-lg mb-1" value="Registrér" />
                     </div>
@@ -130,5 +152,3 @@
     </div>
 </body>
 </html>
-
-

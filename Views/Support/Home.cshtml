@@ -1,17 +1,21 @@
-﻿@using CJ.ViewModels
+﻿<!-- This Razor view displays a list of tickets with their details. -->
+@* Define the title of the page *@
+@using CJ.ViewModels
 @{
     ViewData["title"] = "product list";
 }
 
 @model List<TicketOverviewViewModel>
 
-    @*what de fack*@
 <!DOCTYPE html>
 <html lang="da">
 <head>
+    <!-- Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title -->
     <title>IT Ticket System</title>
+    <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="container-fluid">
@@ -20,53 +24,28 @@
             <!-- Navigation Buttons -->
             <div class="row my-3">
                 <div class="col">
+                    <!-- Navigation buttons for creating new ticket, accessing admin panel, and overview -->
                     <button class="btn btn-primary mr-2" onclick="window.location.href='@Url.Action("Ticket_change", "Support")'">Ny Ticket</button>
                     <button class="btn btn-primary mr-2" onclick="window.location.href='@Url.Action("Admin", "Support")'">Admin</button>
                     <button class="btn btn-primary" onclick="window.location.href='@Url.Action("Dashboard", "Support")'">Overview</button>
                 </div>
             </div>
 
-
             <!-- Action Buttons -->
             <div class="row my-2">
                 <div class="col">
+                    <!-- Action buttons for filtering and editing -->
                     <button class="btn btn-secondary mr-2" onclick="location.href='filtrer.html'">Filtre</button>
                     <button class="btn btn-secondary" onclick="location.href='rediger.html'">Rediger</button>
                 </div>
             </div>
         </div>
 
- @*        <!-- IT Tickets Table -->
-        <div class="row">
-            <div class="col">
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>Ticket ID</th>
-                            <th>Beskrivelse</th>
-                            <th>Status</th>
-                            <th>Prioritet</th>
-                            <th>Oprettet Dato</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        </tr>
-                        <!-- Flere rækker kan tilføjes her -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bootstrap JS og afhængigheder -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> *@
-
-    
+        <!-- IT Tickets Table -->
         <table id="productTable" class="display" style="width:100%">
             <thead>
                 <tr>
+                    <!-- Table header columns -->
                     <th>Ticket ID</th>
                     <th>Oprettet</th>
                     <th>Titel</th>
@@ -82,6 +61,7 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                    <!-- Populate table rows with ticket data -->
                     <tr>
                         <td>@item.TicketID</td>
                         <td>@item.Oprettelsestid</td>
@@ -97,31 +77,30 @@
                 }
             </tbody>
         </table>
-    </div> 
+    </div>
             @*         <!-- Button to create a new ticket -->
-        <div class="text-center" style="margin-top: 20px;">
+    <div class="text-center" style="margin-top: 20px;">
         <button class="btn btn-primary" onclick="window.location.href='@Url.Action("new_ticket", "ProductCatalog")'">Ny ticket</button>
         </div> *@
 
 
     @section Scripts {
+        <!-- Add custom styles and scripts -->
         <style>
-        .no-wrap {
-        white-space: nowrap;
-        }
+            .no-wrap {
+                white-space: nowrap;
+            }
         </style>
 
         <script type="text/javascript">
-        $(document).ready(() => {
-        $('#productTable').DataTable({
-        "scrollX": true,
-        "scrollCollapse": true,
-        });
-        $('#productTable th, #productTable td').addClass('no-wrap');
-        });
+            $(document).ready(() => {
+                $('#productTable').DataTable({
+                    "scrollX": true,
+                    "scrollCollapse": true,
+                });
+                $('#productTable th, #productTable td').addClass('no-wrap');
+            });
         </script>
-        }
-       
-
+    }
 </body>
 </html>

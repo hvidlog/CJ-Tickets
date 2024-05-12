@@ -13,17 +13,21 @@ namespace CJ.Repository
     {
         IServiceScopeFactory _serviceScopeFactory;
 
-        public GetData(IServiceScopeFactory serviceScopeFactory) 
+        // Constructor to initialize GetData with IServiceScopeFactory.
+        public GetData(IServiceScopeFactory serviceScopeFactory)
         {
-            _serviceScopeFactory= serviceScopeFactory;
+            _serviceScopeFactory = serviceScopeFactory;
         }
 
+        // Method to asynchronously retrieve ticket overview data from the database.
         public async Task<List<TicketOverviewViewModel>> GetTicketOverviewAsync()
         {
+            // Creating a scope to resolve DbContext dependency.
             using (var scope = _serviceScopeFactory.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetRequiredService<CJDBContext>();
 
+                // Query to join ticket data with related entities and project into a view model.
                 var query = from t in dbContext.Tickets
                             join b in dbContext.Brugeres on t.BrugerId equals b.BrugerId
                             join s in dbContext.Brugeres on t.SupporterId equals s.BrugerId
@@ -54,15 +58,18 @@ namespace CJ.Repository
             }
         }
 
+        // Method to asynchronously retrieve ticket data by ticket ID from the database.
         public async Task<List<TicketViewModel>> GetTicketAsync(int ticketid)
         {
+            // Creating a scope to resolve DbContext dependency.
             using (var scope = _serviceScopeFactory.CreateScope())
-            { 
+            {
                 var dbContext = scope.ServiceProvider.GetRequiredService<CJDBContext>();
 
-                //List<string> muligeKats = await (from k in dbContext.Kategoriers select k.Navn).ToListAsync();
+                // Retrieving KatPrioStaViewModel.
                 KatPrioStaViewModel kps = await GetKatPrioStaAsync();
 
+                // Query to join ticket data with related entities and project into a view model.
                 var query = from t in dbContext.Tickets
                             join st in dbContext.Statuses on t.StatusId equals st.StatusId
                             join p in dbContext.Prioriteters on t.PrioritetId equals p.PrioritetId
@@ -85,16 +92,18 @@ namespace CJ.Repository
                             };
                 List<TicketViewModel> result = await query.ToListAsync();
                 return result;
-
-
             }
         }
+
+        // Method to asynchronously retrieve KatPrioStaViewModel data from the database.
         public async Task<KatPrioStaViewModel> GetKatPrioStaAsync()
         {
+            // Creating a scope to resolve DbContext dependency.
             using (var scope = _serviceScopeFactory.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetRequiredService<CJDBContext>();
 
+                // Query to retrieve Kategorier data.
                 var queryKat = from k in dbContext.Kategoriers
                                select new Kategorier
                                {
@@ -103,14 +112,16 @@ namespace CJ.Repository
                                };
                 List<Kategorier> Kat = await queryKat.ToListAsync();
 
+                // Query to retrieve Prioriteter data.
                 var queryPrio = from p in dbContext.Prioriteters
-                               select new Prioriteter
-                               {
-                                   PrioritetId = p.PrioritetId,
-                                   Navn = p.Navn,
-                               };
+                                select new Prioriteter
+                                {
+                                    PrioritetId = p.PrioritetId,
+                                    Navn = p.Navn,
+                                };
                 List<Prioriteter> Prio = await queryPrio.ToListAsync();
 
+                // Query to retrieve Status data.
                 var querySta = from s in dbContext.Statuses
                                select new Status
                                {
@@ -119,6 +130,7 @@ namespace CJ.Repository
                                };
                 List<Status> Sta = await querySta.ToListAsync();
 
+                // Creating KatPrioStaViewModel object with retrieved data.
                 var result = new KatPrioStaViewModel
                 {
                     Kategori = Kat,

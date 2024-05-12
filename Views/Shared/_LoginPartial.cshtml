@@ -1,14 +1,19 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿<!-- This Razor view displays a navigation bar with options based on user authentication status. -->
+@* Import necessary namespaces and inject SignInManager and UserManager *@
+@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
+        <!-- If user is signed in, display user-specific options -->
         <li class="nav-item">
+            <!-- Display a greeting message with the user's name -->
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
         </li>
 
+        <!-- Navigation options for signed-in users -->
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">User</a>
         </li>
@@ -16,13 +21,16 @@
             <a class="nav-link text-dark" asp-area="" asp-controller="Support" asp-action="Home">Support</a>
         </li>
         <li class="nav-item">
+            <!-- Logout form -->
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "User", new { area = "" })">
+                <!-- Submit button for logout -->
                 <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
             </form>
         </li>
     }
     else
     {
+        <!-- If user is not signed in, display authentication options -->
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
         </li>

@@ -1,4 +1,5 @@
-﻿@using CJ.ViewModels
+﻿<!-- This Razor view displays a form for creating a new ticket. -->
+@using CJ.ViewModels
 
 @model TicketCreateViewModel
 
@@ -9,6 +10,7 @@
                 <h1>New Ticket</h1>
                 <p>Her laver du en ny ticket for dit IT problem</p>
             </div>
+            <!-- Form for creating a new ticket -->
             <form asp-controller="User" asp-action="Create" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label asp-for="Titel">Titel</label>
@@ -16,6 +18,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="KategoriId">Kategori</label>
+                    <!-- Dropdown for selecting ticket category -->
                     <select asp-for="KategoriId" class="form-control" asp-items="ViewBag.KategoriList">
                         <option value="">Vælg Kategori</option>
                         <option value="1">Software</option>
@@ -26,10 +29,12 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Beskrivelse">Beskrivelse</label>
+                    <!-- Text area for entering ticket description -->
                     <textarea asp-for="Beskrivelse" class="form-control" rows="5" placeholder="Beskrivelse" autocomplete="off"></textarea>
                 </div>
                 <div class="form-group">
                     <label asp-for="PrioritetId">Prioritet</label>
+                    <!-- Dropdown for selecting ticket priority -->
                     <select asp-for="PrioritetId" class="form-control" asp-items="ViewBag.PrioritetList">
                         <option value="">Vælg Prioritet</option>
                         <option value="1">Høj</option>

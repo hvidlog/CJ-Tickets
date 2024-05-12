@@ -3,6 +3,8 @@ using CJ.Models;
 //using CJ.Models.TicketData;
 using CJ.ViewModels;
 
+// Interfaces between controller and GetData.cs file
+
 namespace CJ.Repository.Interfaces
 {
     public interface IGetData

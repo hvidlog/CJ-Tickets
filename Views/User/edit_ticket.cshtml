@@ -1,144 +1,151 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿<!-- This Razor view displays a form for editing a ticket. -->
+@*
+   For more information on enabling MVC for empty projects, visit
+   https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @using CJ.ViewModels
 @using CJ.Repository
 @using CJ.Repository.Interfaces
 @model List<TicketViewModel>
 
-
-
 @if (Model.Count == 0 | Model.Count >= 2)
 {
+    <!-- Display an error message if there's a problem with the ticket number -->
     <h1>SOMETHING IS WRONG</h1>
-    <p>There seem to be a problem with the ticket number</p>
+    <p>There seems to be a problem with the ticket number.</p>
 }
-else{
-<!DOCTYPE html>
-<html lang="da">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Ticket</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
+else
+{
+    <!DOCTYPE html>
+    <html lang="da">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>New Ticket</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            /* Styling for the page */
+            body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+            }
 
-        .text-info {
-            color: #17a2b8;
-        }
+            .text-info {
+                color: #17a2b8;
+            }
 
-        .btn-success {
-            background-color: #28a745;
-        }
+            .btn-success {
+                background-color: #28a745;
+            }
 
-        .form-control-file, .form-control {
-            margin-bottom: 10px;
-        }
+            .form-control-file, .form-control {
+                margin-bottom: 10px;
+            }
 
-        .container {
-            margin-bottom: 100px; /* Juster denne værdi baseret på footeren's højde */
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="text-center">
-                    <h1>Edit Ticket</h1>
+            .container {
+                margin-bottom: 100px; /* Adjust this value based on the footer's height */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Page title and description -->
+                    <div class="text-center">
+                        <h1>Edit Ticket</h1>
                     <p>Her ændre du en ticket du har lavet for at give nye informationer ved fx at lave en kommentar til supporten der har din ticket</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
+            <div class="row">
             <!-- Ticket Oprettelse Formular Kolonne -->
-            <div class="col-md-8">
+                <div class="col-md-8">
+                    <!-- Ticket editing form -->
                     <form asp-controller="User" asp-action="Create" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="Titel">Titel</label>
-                        <input type="text" id="Titel" name="Titel" value=@Model[0].Titel placeholder="Titel" class="form-control" autocomplete="off" />
-                    </div>
-                    <div class="form-group">
-                        <label for="Kategori">Kategori</label>
-                        <select id="Kategori" name="Kategori" class="form-control" value=@Model[0].KategoriNavn>
-                            <option value="" hidden>Vælg kategori</option>
-                            @foreach (Kategorier kat in @Model[0].KatPrioStat.Kategori)
+                        <!-- Ticket title -->
+                        <div class="form-group">
+                            <label for="Titel">Title</label>
+                            <input type="text" id="Titel" name="Titel" value=@Model[0].Titel placeholder="Title" class="form-control" autocomplete="off" />
+                        </div>
+                        <!-- Ticket category -->
+                        <div class="form-group">
+                            <label for="Kategori">Category</label>
+                            <select id="Kategori" name="Kategori" class="form-control" value=@Model[0].KategoriNavn>
+                                <option value="" hidden>Select category</option>
+                                <!-- Loop through categories -->
+                                @foreach (Kategorier kat in @Model[0].KatPrioStat.Kategori)
                                 {
+                                    <!-- Check if category matches and mark as selected -->
                                     if (kat.Navn == @Model[0].KategoriNavn)
                                     {
-                            <option value="@kat.KategoriId" selected>@kat.Navn</option>
+                                        <option value="@kat.KategoriId" selected>@kat.Navn</option>
                                     }
-                                    else{
-                            <option value="@kat.KategoriId">@kat.Navn</option>
+                                    else
+                                    {
+                                        <option value="@kat.KategoriId">@kat.Navn</option>
                                     }
-
                                 }
-                        </select>
-                    </div>
-                    <div class="form-group">
+                            </select>
+                        </div>
+                        <!-- Ticket description -->
+                        <div class="form-group">
                         <label for="Beskrivelse">Beskrivelse</label>
                         <textarea id="Beskrivelse" name="Beskrivelse" placeholder="Beskrivelse" class="form-control" rows="5" autocomplete="off">@Model[0].Beskrivelse</textarea>
-                    </div>
-                    <div class="form-group">
+                        </div>
+                        <!-- Ticket priority -->
+                        <div class="form-group">
                         <label for="Prioritet">Prioritet</label>
-                        <select id="Prioritet" name="Prioritet" class="form-control">
+                            <select id="Prioritet" name="Prioritet" class="form-control">
                             <option value="" hidden>Vælg kategori</option>
-                            @foreach (Prioriteter prio in @Model[0].KatPrioStat.Prioritet)
+                                @foreach (Prioriteter prio in @Model[0].KatPrioStat.Prioritet)
                                 {
+                                    <!-- Check if priority matches and mark as selected -->
                                     if (prio.Navn == @Model[0].PrioritetNavn)
                                     {
                                         <option value="@prio.PrioritetId" selected>@prio.Navn</option>
                                     }
-                                    else{
+                                    else
+                                    {
                                         <option value="@prio.PrioritetId">@prio.Navn</option>
                                     }
-
                                 }
-                        </select>
-                    </div>
+                            </select>
+                        </div>
+                        <!-- Ticket status (read-only) -->
                         <div class="form-group">
                             <label for="Status">Status</label>
                             <input type="text" id="Status" name="Status" value="@Model[0].StatusNavn" placeholder="Status" class="form-control" readonly />
                         </div>
-                    @*<div class="form-group">
-
-                        <label for="Prioritet">Prioritet</label>
-                        <select id="Prioritet" name="Prioritet" class="form-control">
-
-                            <option value="">Vælg Prioritet</option>
-                            <option value="høj">Høj</option>
-                            <option value="middel">Middel</option>
-                            <option value="lav">Lav</option>
-                        </select>
-                    </div>*@
-                    <div class="form-group">
+                        <!-- File attachment -->
+                        <div class="form-group">
                         <label for="File">Vedhæft Fil</label>
-                        <input type="file" id="File" name="File" class="form-control-file mb-2">
-                    </div>
-                    <div class="form-group">
+                            <input type="file" id="File" name="File" class="form-control-file mb-2">
+                        </div>
+                        <!-- Submit button -->
+                        <div class="form-group">
                         <input type="submit" class="btn btn-success btn-lg mb-1 float-right" value="Opdater" />
-                    </div>
-                </form>
-            </div>
-            <!-- Tidligere Kommentarer og Skriveboks Kolonne -->
-            <div class="col-md-4">
-                <div class="mb-3">
-                    <h3>Tidligere Kommentarer</h3>
-                    <div id="comments" style="height: 300px; overflow-y: scroll; background-color: #f8f9fa; padding: 10px;">
-                    </div>
+                        </div>
+                    </form>
                 </div>
-                <div>
+                <!-- Previous comments and comment writing column -->
+                <div class="col-md-4">
+                    <!-- Display previous comments -->
+                    <div class="mb-3">
+                    <h3>Tidligere Kommentarer</h3>
+                        <div id="comments" style="height: 300px; overflow-y: scroll; background-color: #f8f9fa; padding: 10px;">
+                            <!-- Previous comments will be displayed here -->
+                        </div>
+                    </div>
+                    <!-- Comment writing section -->
+                    <div>
                     <h3>Skriv en Kommentar</h3>
                     <textarea class="form-control" id="newComment" placeholder="Skriv din kommentar her..." rows="3"></textarea>
                     <button class="btn btn-primary mt-2">Send Kommentar</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
-</html>
+    </body>
+    </html>
 }

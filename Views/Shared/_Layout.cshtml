@@ -1,49 +1,52 @@
-﻿<!DOCTYPE html>
+﻿<!-- Layout template for the CJ application -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Title -->
     <title>@ViewData["Title"] - CJ</title>
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <!-- CJ Custom Styles -->
     <link rel="stylesheet" href="~/CJ.styles.css" asp-append-version="true" />
+    <!-- DataTables CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
 </head>
 <body>
+    <!-- Header -->
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
+                <!-- Logo and Brand -->
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CJ</a>
+                <!-- Navbar Toggle Button -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-    @*                 <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Test">Test</a>
-                        </li>
-                    </ul> *@
+                    <!-- Login Partial View -->
                     <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
     </header>
+    <!-- Main Content -->
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
+    <!-- Footer -->
     <footer class="border-top footer text-muted">
         <div class="container d-flex justify-content-between align-items-center">
+            <!-- Copyright Notice -->
             &copy; 2024 - CJ
+            <!-- Footer Navigation Links -->
             <ul class="navbar-nav d-flex flex-row">
                 <li class="nav-item mx-2">
                     <a class="nav-link text-dark" asp-area="" asp-controller="Public" asp-action="Om">Om CJ</a>
@@ -57,16 +60,16 @@
             </ul>
         </div>
     </footer>
-
-
-
-
-
+    <!-- Scripts -->
+    <!-- jQuery -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Bundle -->
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Site-specific JavaScript -->
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <!-- DataTables JavaScript -->
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-
+    <!-- Additional Scripts Section -->
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
