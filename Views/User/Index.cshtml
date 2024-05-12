@@ -11,6 +11,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <h1 class="text-center">Dine Tickets</h1>
+    <p class="text-center">Dette er en oversigt over alle Tickets. du kan nu vælge at se/redigere dine eksisterende tickets, eller du kan lave en ny.</p>
     <table id="productTable" class="display" style="width:100%">
         <thead>
             <tr>
@@ -32,28 +34,28 @@
             {
                 if (User.Identity?.Name == item.BrugerEmail)
                 {
-                    <tr>
-                        <td>@item.TicketID</td>
-                        <td>@item.Oprettelsestid</td>
-                        <td>@item.Titel</td>
-                        <td>@item.Beskrivelse</td>
-                        <td>@item.BrugerFNavn @item.BrugerLNavn</td>
-                        <td>@item.BrugerEmail</td>
-                        <td>@item.SupportFNavn @item.SupportLNavn</td>
-                        <td>@item.StatusNavn</td>
-                        <td>@item.PrioritetNavn</td>
-                        <td>@item.KategoriNavn</td>
-                        <td><button class="btn btn-primary" onclick="location.href='@Url.Action("Edit_ticket", "User", new { ticket = item.TicketID.ToString()})'">Edit</button></td>
-                    </tr>
+            <tr>
+                <td>@item.TicketID</td>
+                <td>@item.Oprettelsestid</td>
+                <td>@item.Titel</td>
+                <td>@item.Beskrivelse</td>
+                <td>@item.BrugerFNavn @item.BrugerLNavn</td>
+                <td>@item.BrugerEmail</td>
+                <td>@item.SupportFNavn @item.SupportLNavn</td>
+                <td>@item.StatusNavn</td>
+                <td>@item.PrioritetNavn</td>
+                <td>@item.KategoriNavn</td>
+                <td><button class="btn btn-primary" onclick="location.href='@Url.Action("Edit_ticket", "User", new { ticket = item.TicketID.ToString()})'">Edit</button></td>
+            </tr>
                 }
             }
         </tbody>
     </table>
 
 
-            <!-- Button to create a new ticket -->
+    <!-- Button to create a new ticket -->
     <div class="text-center" style="margin-top: 20px;">
-    <button class="btn btn-primary" onclick="window.location.href='@Url.Action("new_ticket", "User")'">Ny ticket</button>
+        <button class="btn btn-primary" onclick="window.location.href='@Url.Action("new_ticket", "User")'">Ny ticket</button>
     </div>
 
 
