@@ -29,12 +29,32 @@ namespace ZBC.Controllers
         }
 
         [Authorize]
-        public async Task<IActionResult> Edit_ticket(int ticket )
+        public async Task<IActionResult> Edit_ticket(int ticket)
         {
             
             var tickets = await _getData.GetTicketAsync(ticket);
             return View(tickets);
         }
+
+        //[HttpPost]
+        //public async Task<IActionResult> Edit_ticket(Ticket ticket)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        // Log or examine the model state
+        //        foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+        //        {
+        //            _logger.LogError(error.ErrorMessage);
+        //        }
+        //        return View();
+        //    }
+
+        //    await _addDataService.UpdateTicketAsync(ticket);
+
+        //    return RedirectToAction("index");
+        //}
+
+
 
         [Authorize]
         public async Task<IActionResult> New_ticket()
@@ -42,6 +62,7 @@ namespace ZBC.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult Create()
         {
             return View("new_ticket", new TicketCreateViewModel());
