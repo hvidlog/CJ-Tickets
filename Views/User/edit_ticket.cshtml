@@ -58,17 +58,17 @@ else{
                         <input type="text" id="Titel" name="Titel" value=@Model[0].Titel placeholder="Titel" class="form-control" autocomplete="off"/>
                     </div>
                     <div class="form-group">
-                            <label for="Kategori">Kategori</label><label>@Model[0].KategoriNavn</label>
+                            <label for="Kategori">Kategori</label>
                             <select id="Kategori" name="Kategori" class="form-control" value=@Model[0].KategoriNavn>
                                 <option value="" hidden>Vælg kategori</option>
-                                @foreach (string kat in @Model[0].muligeKategorier)
+                                @foreach (Kategorier kat in @Model[0].KatPrioStat.Kategori)
                                 {
-                                    if (kat == @Model[0].KategoriNavn.ToString())
+                                    if (kat.Navn == @Model[0].KategoriNavn)
                                     {
-                                        <option value="@kat" selected>@kat</option>
+                                        <option value="@kat.KategoriId" selected>@kat.Navn</option>
                                     }
                                     else{
-                                        <option value="@kat">@kat</option>
+                                        <option value="@kat.KategoriId">@kat.Navn</option>
                                     }
 
                                 }

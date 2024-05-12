@@ -60,7 +60,8 @@ namespace ZBC.Repository
             { 
                 var dbContext = scope.ServiceProvider.GetRequiredService<CJDBContext>();
 
-                List<string> muligeKats = await (from k in dbContext.Kategoriers select k.Navn).ToListAsync();
+                //List<string> muligeKats = await (from k in dbContext.Kategoriers select k.Navn).ToListAsync();
+                KatPrioStaViewModel kps = await GetKatPrioStaAsync();
 
                 var query = from t in dbContext.Tickets
                             join st in dbContext.Statuses on t.StatusId equals st.StatusId
@@ -80,9 +81,50 @@ namespace ZBC.Repository
                                 //Beskrivelse = t.Beskrivelse,
                                 //BrugerId = t.BrugerId,
                                 //SupporterId = t.SupporterId
-                                muligeKategorier = muligeKats
+                                KatPrioStat = kps
                             };
                 List<TicketViewModel> result = await query.ToListAsync();
+                return result;
+
+
+            }
+        }
+        public async Task<KatPrioStaViewModel> GetKatPrioStaAsync()
+        {
+            using (var scope = _serviceScopeFactory.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<CJDBContext>();
+
+                var queryKat = from k in dbContext.Kategoriers
+                               select new Kategorier
+                               {
+                                   KategoriId = k.KategoriId,
+                                   Navn = k.Navn,
+                               };
+                List<Kategorier> Kat = await queryKat.ToListAsync();
+
+                var queryPrio = from p in dbContext.Prioriteters
+                               select new Prioriteter
+                               {
+                                   PrioritetId = p.PrioritetId,
+                                   Navn = p.Navn,
+                               };
+                List<Prioriteter> Prio = await queryPrio.ToListAsync();
+
+                var querySta = from s in dbContext.Statuses
+                               select new Status
+                               {
+                                   StatusId = s.StatusId,
+                                   Navn = s.Navn,
+                               };
+                List<Status> Sta = await querySta.ToListAsync();
+
+                var result = new KatPrioStaViewModel
+                {
+                    Kategori = Kat,
+                    Prioritet = Prio,
+                    Status = Sta
+                };
                 return result;
             }
         }

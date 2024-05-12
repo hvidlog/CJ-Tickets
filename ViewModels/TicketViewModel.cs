@@ -25,6 +25,6 @@ namespace ZBC.ViewModels
         public virtual Prioriteter? PrioritetNavigation { get; set; }
         public virtual Status? Status { get; set; }
         public virtual Brugere? Supporter { get; set; }
-        public List<string> muligeKategorier { get; set; }
+        public KatPrioStaViewModel KatPrioStat { get; set; }
 }
 }

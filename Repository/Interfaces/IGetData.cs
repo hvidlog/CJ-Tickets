@@ -9,5 +9,6 @@ namespace ZBC.Repository.Interfaces
     {
         Task<List<TicketOverviewViewModel>> GetTicketOverviewAsync();
         Task<List<TicketViewModel>> GetTicketAsync(int ticketid);
+        Task<KatPrioStaViewModel> GetKatPrioStaAsync();
     }
 }
