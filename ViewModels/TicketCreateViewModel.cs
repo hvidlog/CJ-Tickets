@@ -11,7 +11,7 @@ namespace CJ.ViewModels
         public int PrioritetId { get; set; }
         public int BrugerId { get; set; }
         public int SupporterId { get; set; }
-        public IFormFile File { get; set; }
+        //public IFormFile File { get; set; }
     }
 
 }
