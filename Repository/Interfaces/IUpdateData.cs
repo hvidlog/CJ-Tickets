@@ -1,4 +1,5 @@
 ﻿using CJ.Models;
+using CJ.ViewModels;
 
 namespace CJ.Repository.Interfaces
 {

@@ -12,12 +12,14 @@ namespace CJ.Controllers
         private readonly ILogger<UserController> _logger;
         private readonly IGetData _getData;
         private readonly IAddData _addDataService;
+        private readonly IUpdateData _updateDataService;
 
-        public UserController(ILogger<UserController> logger, IGetData getData, IAddData addDataService)
+        public UserController(ILogger<UserController> logger, IGetData getData, IAddData addDataService, IUpdateData updateDataService)
         {
             _logger = logger;
             _getData = getData;
             _addDataService = addDataService;
+            _updateDataService = updateDataService;
 
         }
 
@@ -36,23 +38,29 @@ namespace CJ.Controllers
             return View(tickets);
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> Edit_ticket(Ticket ticket)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        // Log or examine the model state
-        //        foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
-        //        {
-        //            _logger.LogError(error.ErrorMessage);
-        //        }
-        //        return View();
-        //    }
+        [Authorize]
+        public IActionResult Update()
+        {
+            return View("edit_ticket", new Ticket());
+        }
 
-        //    await _addDataService.UpdateTicketAsync(ticket);
+        [HttpPost]
+        public async Task<IActionResult> Edit_ticket(Ticket ticket)
+        {
+            if (!ModelState.IsValid)
+            {
+                // Log or examine the model state
+                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    _logger.LogError(error.ErrorMessage);
+                }
+                return View();
+            }
 
-        //    return RedirectToAction("index");
-        //}
+            await _updateDataService.UpdateTicketAsync(ticket);
+
+            return RedirectToAction("index");
+        }
 
 
 
