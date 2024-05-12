@@ -1,6 +1,6 @@
-﻿using ZBC.Models;
+﻿using CJ.Models;
 
-namespace ZBC.Repository.Interfaces
+namespace CJ.Repository.Interfaces
 {
     public interface IUpdateData
     {

@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ZBC.Data;
-using ZBC.Models;
-using ZBC.Repository.Interfaces;
+using CJ.Data;
+using CJ.Models;
+using CJ.Repository.Interfaces;
 
-namespace ZBC.Repository
+namespace CJ.Repository
 {
     public class UpdateData : IUpdateData
     {
